@@ -7,3 +7,4 @@ const lines = [
 ];
 
 console.log(lines.join('\n'));
+
