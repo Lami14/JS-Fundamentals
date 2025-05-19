@@ -6,5 +6,14 @@ const lines = [
   "JavaScript is amazing"
 ];
 
-console.log(lines.join('\n'));
+let i = 0;
+let output = "";
+
+do {
+  output += lines[i] + (i < lines.length - 1 ? "\n" : "");
+  i++;
+} while (i < lines.length);
+
+console.log(output);
+
 
