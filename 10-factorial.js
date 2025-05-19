@@ -17,11 +17,26 @@ if (!arg) {
   process.exit(0);
 }
 
-const num = BigInt(arg);
-
-if (num < 0n) {
-  console.log("1"); // factorial for negative is undefined, print 1 or handle differently
+let num;
+try {
+  num = BigInt(arg);
+} catch {
+  console.log("1");
   process.exit(0);
 }
 
-console.log(factorial(num).toString());
+if (num < 0n) {
+  console.log("1");
+  process.exit(0);
+}
+
+const fact = factorial(num);
+
+const factNum = Number(fact);
+if (factNum === Infinity) {
+  // Number too big to represent, print full BigInt string
+  console.log(fact.toString());
+} else {
+  // print scientific notation for numbers that fit in Number
+  console.log(factNum.toExponential());
+}
